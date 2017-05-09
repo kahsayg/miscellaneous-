@@ -1,0 +1,55 @@
+#!/usr/bin/python
+#Translator.py
+#Imports
+import sys
+import string
+from mpi4py import MPI
+comm = MPI.COMM_WORLD
+#Which thread is it
+rank = comm.Get_rank()
+#How many thread are there in total
+size = comm.Get_size()
+#This is where the output will be stored.
+output = []
+transformer ={"A":"Q","T":"A","Q":"T","G":"R","C":"G","R":"C"}
+#Can't do this as order is inportant
+#keyl= transformer.values()
+keyl= ["A","T","Q","G","C","R"]
+print " size =", size
+print " rank  =", rank
+if(len(sys.argv) >2):
+ #Number of lines to read, this is calculated externally to simplify
+ number_of_lines=0
+ with open(sys.argv[2], "r") as f2:
+  for i, line in enumerate(f2):
+   number_of_lines=line
+ print ("Number of lines="+number_of_lines)
+ lines_per_rank=(int(number_of_lines)/size)
+ if(lines_per_rank < 1 ): 
+  lines_per_rank=1
+ #Decide how many lines to read, depending on number of threads
+ print ("Number of lines="+str(number_of_lines)+"  lines_per_rank="+str(lines_per_rank))
+ with open(sys.argv[1], "r") as f:
+  content =[]
+  for i, line in enumerate(f):
+   #The first chunk, if it is the 
+   if(rank == 0 and i < lines_per_rank):
+     content.append(line)
+   #If it is the last thread everything left
+   elif(rank == (size-1) and (i>(lines_per_rank*(rank)))):
+     content.append(line)
+   elif((i > (rank*lines_per_rank)) and (i <= ((rank + 1)*lines_per_rank))):
+     content.append(line)
+  #Was there anything to process 
+  if(len(content)>0):
+   for line in content:
+    line=line.upper()
+    for key in keyl:
+     line = string.replace(line,key, transformer[key])
+    output.append(line)
+  if(len(output)>0):
+   outfile = open("t_"+str(rank)+"_"+sys.argv[1]+'_trans', 'w')
+   for tlines in output:
+    outfile.write(tlines)
+else:
+ print "No file specified"

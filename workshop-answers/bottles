@@ -1,0 +1,6 @@
+b="$0 of beer"
+w="on the wall"
+t="Take one down and pass it around,"
+o="o more"
+for n in {99..2};do echo -e "$n $b $w,\n$n $b.\n$t\n$(($n -1 )) $b $w.\n";done
+echo -e "1 $b $w,\n1 $b.\n$t\nN$o $b $w.\n\nN$o $b $w,\nn$o $b.\nGo to the store and buy some more,\n99 $b $w."

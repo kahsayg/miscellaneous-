@@ -1,0 +1,7 @@
+#!/bin/bash
+ct=0
+for NAME in $(cat $2)
+ do
+  echo "Hello $NAME2!"
+  ct=$ct+
+ done

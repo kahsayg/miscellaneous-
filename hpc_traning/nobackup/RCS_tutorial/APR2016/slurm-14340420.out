@@ -1,0 +1,16 @@
+Starting job 14340420 ("RCS0416_hello") on c16-29 at Tue Apr 5 14:10:14 CEST 2016
+/var/spool/slurmd/job14340420/slurm_script: line 11: xxecho: command not found
+
+No Modulefiles Currently Loaded.
+
+Job script resource usage:
+       JobID  MaxVMSize     MaxRSS 
+------------ ---------- ---------- 
+14340420.ba+    214744K      1664K 
+
+Job step resource usage:
+       JobID    JobName  AllocCPUS  MaxVMSize     MaxRSS    Elapsed ExitCode 
+------------ ---------- ---------- ---------- ---------- ---------- -------- 
+14340420     RCS0416_h+          1                         00:00:14      0:0 
+
+Job 14340420 ("RCS0416_hello") completed on c16-29 at Tue Apr 5 14:10:25 CEST 2016

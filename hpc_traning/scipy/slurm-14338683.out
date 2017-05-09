@@ -1,0 +1,20 @@
+Starting job 14338683 ("advanced_python_test") on c16-35 at Tue Apr 5 10:18:08 CEST 2016
+Traceback (most recent call last):
+  File "test.py", line 6, in <module>
+    a= np.aray([1,2,3])
+AttributeError: 'module' object has no attribute 'aray'
+
+Currently Loaded Modulefiles:
+  1) intel/2015.3     2) libffi/3.0.13    3) python2/2.7.10
+
+Job script resource usage:
+       JobID  MaxVMSize     MaxRSS 
+------------ ---------- ---------- 
+14338683.ba+    214752K      2222K 
+
+Job step resource usage:
+       JobID    JobName  AllocCPUS  MaxVMSize     MaxRSS    Elapsed ExitCode 
+------------ ---------- ---------- ---------- ---------- ---------- -------- 
+14338683     advanced_+          1                         00:00:03      0:0 
+
+Job 14338683 ("advanced_python_test") completed on c16-35 at Tue Apr 5 10:18:10 CEST 2016
